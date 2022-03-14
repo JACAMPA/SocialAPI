@@ -13,7 +13,10 @@ const userSchema = new Schema(
         type: String,
         unique: true,
         required: true,
-        match: [/^([\w\.-]+)@([\w\.-]+)\.([a-zA-Z0-9\.]{2,6})$/, 'Please enter a valid email address.'],
+        match: [
+            /.+@.+\..+/,
+          "Enter a valid email",
+        ],
       },
       thoughts: [
         {
@@ -36,6 +39,7 @@ const userSchema = new Schema(
       id: false,
     }
   );
+  
   userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
   });

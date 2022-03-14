@@ -7,7 +7,8 @@ module.exports = {
     try {
       const newThought = await User.find({});
       res.json(newThought);
-    } catch (err) {
+    }
+     catch (err) {
       console.log(err);
       res.status(400).json(err);
     }
@@ -45,7 +46,7 @@ module.exports = {
               );
           }) .then(dbUserData => {
               if (!dbUserData) {
-                  res.status(404).json({ message: 'User not found!' });
+                  res.status(404).json({ message: 'Cannot find user!' });
                   return;
               }res.json(dbUserData);
           })
